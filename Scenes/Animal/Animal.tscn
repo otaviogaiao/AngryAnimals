@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwecji05ymw7e"]
+[gd_scene load_steps=10 format=3 uid="uid://cwecji05ymw7e"]
 
 [ext_resource type="Script" path="res://Scenes/Animal/Animal.cs" id="1_27yei"]
 [ext_resource type="Texture2D" uid="uid://7ch57qgxbd0u" path="res://Assets/player/parrot.png" id="1_k15hp"]
@@ -6,6 +6,9 @@
 [ext_resource type="AudioStream" uid="uid://ce7gt66i6a5c2" path="res://Assets/audio/stretch2.ogg" id="3_xg77g"]
 [ext_resource type="AudioStream" uid="uid://de455ke1xy1bl" path="res://Assets/audio/catapult.ogg" id="4_g41ds"]
 [ext_resource type="AudioStream" uid="uid://cewo1eo8myp1v" path="res://Assets/audio/kick_wood.ogg" id="5_3ouo5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ncuxi"]
+bounce = 0.23
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1s71o"]
 radius = 19.799
@@ -16,7 +19,10 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="Animal" type="RigidBody2D" node_paths=PackedStringArray("_stretchSound", "_kickSound", "_launchSound", "_arrow", "_visibleOnScreen", "_debugLabel")]
 input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_ncuxi")
 freeze = true
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_27yei")
 _stretchSound = NodePath("StrechSound")
 _kickSound = NodePath("KickSound")

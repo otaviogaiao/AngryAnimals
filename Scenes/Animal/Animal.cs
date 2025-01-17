@@ -33,6 +33,8 @@ public partial class Animal : RigidBody2D
 	private float _arrowScaleX;
 
 	private bool _stretchSoundPlayed = false;
+
+	private int _lastCollisionCount = 0;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -139,6 +141,21 @@ public partial class Animal : RigidBody2D
 		UpdateArrowScale();
 	}
 
+	private void PlayKickSoundOnCollision()
+	{
+		if (_lastCollisionCount == 0 && GetContactCount() > 0 && !_kickSound.Playing)
+		{
+			_kickSound.Play();
+		}
+		
+		_lastCollisionCount = GetContactCount();
+	}
+
+	private void HandleFlight()
+	{
+		PlayKickSoundOnCollision();
+	}
+
 	private void UpdateState()
 	{
 		switch (_state)
@@ -147,6 +164,7 @@ public partial class Animal : RigidBody2D
 				HandleDragging();
 				break;
 			case AnimalState.Release:
+				HandleFlight();
 				break;
 		}
 	}
@@ -179,11 +197,26 @@ public partial class Animal : RigidBody2D
 	private void OnSleepStateChanged()
 	{
 		GD.Print("OnSleepStateChanged");
+		if (!Sleeping) return;
+
+		foreach (var body in GetCollidingBodies())
+		{
+			if (body is Cup cup)
+			{
+				CallDeferred( "Die");
+			}
+		}
 	}
 	
 	private void OnScreenExited()
 	{
 		GD.Print("OnScreenExited");
+		Die();
+	}
+
+	private void Die()
+	{
+		SignalManager.Instance.EmitAnimalDied();
 		QueueFree();
 	}
 }
