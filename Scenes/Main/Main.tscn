@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcragldg858vq"]
+
+[ext_resource type="Texture2D" uid="uid://icrfcxvpdx1g" path="res://Assets/env/MainBG.png" id="1_xnx4u"]
+[ext_resource type="AudioStream" uid="uid://d3h5tvudh3o6y" path="res://Assets/audio/birdsong.wav" id="2_fr5lk"]
+[ext_resource type="LabelSettings" uid="uid://dsfc24fhh1k6a" path="res://Resources/LG_BLUE_96.tres" id="3_ihpm8"]
+[ext_resource type="PackedScene" uid="uid://dh1d5sfia0uqt" path="res://Scenes/LevelButton/LevelButton.tscn" id="4_kgrho"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.035
+anchor_top = -0.04
+anchor_right = 2.0
+anchor_bottom = 2.006
+offset_left = -35.68
+offset_top = -25.08
+offset_right = -1112.0
+offset_bottom = -607.888
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xnx4u")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fr5lk")
+autoplay = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0436332
+theme_override_constants/margin_top = 32
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Angry Animals"
+label_settings = ExtResource("3_ihpm8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+
+[node name="LevelButton" parent="HBoxContainer" instance=ExtResource("4_kgrho")]
+layout_mode = 2
+_levelNumber = 1
+
+[node name="LevelButton2" parent="HBoxContainer" instance=ExtResource("4_kgrho")]
+layout_mode = 2
+_levelNumber = 2
+
+[node name="LevelButton3" parent="HBoxContainer" instance=ExtResource("4_kgrho")]
+layout_mode = 2
+_levelNumber = 3
