@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://d17v434kgl1e0"]
+
+[ext_resource type="LabelSettings" uid="uid://1p51qlbokes6" path="res://Resources/LG_BLACK_32.tres" id="1_avpp8"]
+[ext_resource type="LabelSettings" uid="uid://dsfc24fhh1k6a" path="res://Resources/LG_BLUE_96.tres" id="1_xtkv3"]
+[ext_resource type="LabelSettings" uid="uid://bvwo6atxq2of0" path="res://Resources/LG_WHITE_48.tres" id="2_5snqn"]
+[ext_resource type="AudioStream" uid="uid://563n1cq8exif" path="res://Assets/audio/jazzyfrenchy.mp3" id="4_pcqgn"]
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 32
+
+[node name="TopLeftContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/TopLeftContainer"]
+layout_mode = 2
+text = "LEVEL 10"
+label_settings = ExtResource("1_avpp8")
+
+[node name="AttemptsLabel" type="Label" parent="MarginContainer/TopLeftContainer"]
+layout_mode = 2
+text = "ATTEMPTS 100"
+label_settings = ExtResource("1_avpp8")
+
+[node name="CentralContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LevelCompleteLabel" type="Label" parent="MarginContainer/CentralContainer"]
+layout_mode = 2
+text = "LEVEL COMPLETE"
+label_settings = ExtResource("1_xtkv3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PressSpaceLabel" type="Label" parent="MarginContainer/CentralContainer"]
+layout_mode = 2
+text = "PRESS SPACE"
+label_settings = ExtResource("2_5snqn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_pcqgn")

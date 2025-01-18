@@ -20,7 +20,7 @@ public partial class LevelButton : TextureButton
 	private void OnPressed()
 	{
 		ScoreManager.SetLevelSelected(_levelNumber);
-		GD.Print("Level " + ScoreManager.GetLevelSelected());
+		SignalManager.Instance.EmitLevelChanged();
 	}
 
 	private void OnMouseEntered()

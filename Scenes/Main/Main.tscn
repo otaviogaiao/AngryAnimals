@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcragldg858vq"]
+[gd_scene load_steps=6 format=3 uid="uid://dcragldg858vq"]
 
+[ext_resource type="Script" path="res://Scenes/Main/Main.cs" id="1_kajs4"]
 [ext_resource type="Texture2D" uid="uid://icrfcxvpdx1g" path="res://Assets/env/MainBG.png" id="1_xnx4u"]
 [ext_resource type="AudioStream" uid="uid://d3h5tvudh3o6y" path="res://Assets/audio/birdsong.wav" id="2_fr5lk"]
 [ext_resource type="LabelSettings" uid="uid://dsfc24fhh1k6a" path="res://Resources/LG_BLUE_96.tres" id="3_ihpm8"]
@@ -10,6 +11,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+script = ExtResource("1_kajs4")
 metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="TextureRect" parent="."]

@@ -21,6 +21,10 @@ public partial class Level : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (Input.IsKeyPressed(Key.Q))
+		{
+			GetTree().ChangeSceneToFile("res://Scenes/Main/Main.tscn");
+		}
 	}
 
 	private void SpawnAnimal()

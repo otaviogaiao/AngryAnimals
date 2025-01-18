@@ -203,9 +203,10 @@ public partial class Animal : RigidBody2D
 		{
 			if (body is Cup cup)
 			{
-				CallDeferred( "Die");
+				cup.Die();
 			}
 		}
+		CallDeferred( "Die");
 	}
 	
 	private void OnScreenExited()
