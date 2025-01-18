@@ -23,7 +23,7 @@ public partial class Level : Node2D
 	{
 		if (Input.IsKeyPressed(Key.Q))
 		{
-			GetTree().ChangeSceneToFile("res://Scenes/Main/Main.tscn");
+			GameManager.LoadMain();
 		}
 	}
 

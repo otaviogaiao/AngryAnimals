@@ -6,6 +6,9 @@ public partial class SignalManager : Node
 	public static SignalManager Instance { get; private set; }
 
 	[Signal]
+	public delegate void AttemptMadeEventHandler();
+	
+	[Signal]
 	public delegate void AnimalDiedEventHandler();
 	
 	[Signal]
@@ -16,6 +19,9 @@ public partial class SignalManager : Node
 
 	[Signal]
 	public delegate void LevelCompletedEventHandler();
+
+	[Signal]
+	public delegate void AttemptUpdatedEventHandler(int numOfAttempts);
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -41,5 +47,15 @@ public partial class SignalManager : Node
 	public void EmitLevelCompleted()
 	{
 		EmitSignal(SignalName.LevelCompleted);
+	}
+
+	public void EmitAttemptMade()
+	{
+		EmitSignal(SignalName.AttemptMade);
+	}
+
+	public void EmitAttemptUpdated(int numOfAttempts)
+	{
+		EmitSignal(SignalName.AttemptUpdated, numOfAttempts);
 	}
 }

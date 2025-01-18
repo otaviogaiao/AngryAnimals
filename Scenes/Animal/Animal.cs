@@ -88,6 +88,7 @@ public partial class Animal : RigidBody2D
 		Freeze = false;
 		_stretchSoundPlayed = false;
 		ApplyCentralImpulse(CalculateImpulse());
+		SignalManager.Instance.EmitAttemptMade();
 	}
 
 	private void ConstraintDragWithinLimits()
